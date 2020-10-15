@@ -33,6 +33,7 @@ const bodymovins = [
 
 export default class extends Component {
   load() {
+    this.hasFeatureAnim = true
     const featureOrder = this.data.get('order')
 
     this.bodymovin = bodymovins[featureOrder]
@@ -78,5 +79,10 @@ export default class extends Component {
         resolve()
       }, 1000)
     })
+  }
+
+  onResize(w, h, r) {
+    if (h < 720) {
+    }
   }
 }

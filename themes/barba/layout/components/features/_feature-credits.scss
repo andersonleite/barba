@@ -1,0 +1,30 @@
+.feature-credits {
+  tr {
+    display: inline;
+  }
+
+  td,
+  th {
+    position: relative;
+    float: left;
+    width: 31%;
+    margin: 2rem 0.5%;
+    padding: 0;
+
+    @include mq(m) {
+      width: 23%;
+    }
+  }
+
+  td > sup {
+    display: none;
+  }
+
+  a {
+    color: $c-menu-feature-5;
+
+    img {
+      width: 100%;
+    }
+  }
+}

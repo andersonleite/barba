@@ -3,8 +3,8 @@
 <% var prev = index === 0 ? features[max - 1] : features[index - 1] %>
 <% var next = index === max - 1 ? features[0] : features[index + 1] %>
 
-<ul class="feature__nav">
-  <li class="feature__nav__el">
+<ul class="feature__nav feature-nav">
+  <li class="feature-nav__el">
     <a href="<%- theme.root %><%- prev.url %>">
       <%- partial('components/common/icon', {
           icon: 'barba-arrow-prev',
@@ -14,7 +14,7 @@
       <span><%- prev.title %></span>
     </a>
   </li>
-  <li class="feature__nav__el">
+  <li class="feature-nav__el">
     <a href="<%- theme.root %><%- next.url %>">
       <span><%- next.title %></span>
       <%- partial('components/common/icon', {

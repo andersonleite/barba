@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import { gsap } from 'gsap'
 import { getInstance } from '../app'
 // DEV
@@ -28,7 +29,7 @@ export default {
     const oldBigShape = current.container.querySelector('.logo.only-big')
     const newBigShape = next.container.querySelector('.logo.only-big')
 
-    newBigShape.classList.remove('can-move')
+    // newBigShape.classList.remove('can-move')
     current.container.style.zIndex = -1
     oldLogo.querySelector('svg').classList.add('fillgray')
 
@@ -43,10 +44,15 @@ export default {
 
     gsap.killTweensOf(bigShape)
 
+    const logoY =
+      oldLogoRect.y +
+      oldLogoRect.height / 2 -
+      (newLogoRect.y + newLogoRect.height / 2)
+
     return gsap
       .timeline({
         onComplete: () => {
-          newBigShape.classList.add('can-move')
+          // newBigShape.classList.add('can-move')
         },
       })
       .to(
@@ -54,12 +60,7 @@ export default {
         {
           duration: 1.4,
           scale,
-          y: -(
-            oldLogoRect.top -
-            newLogoRect.top +
-            newLogoRect.height * (scale * 2) -
-            6
-          ),
+          y: -logoY,
           ease: 'power4.inOut',
         },
         0
@@ -130,12 +131,11 @@ export default {
         },
         0.1
       )
-      .then()
   },
   enter({ next }) {
     const { container } = next
     const newLogo = container.querySelector('.logo.featured')
-    const featureContainer = container.querySelector('.feature-outer')
+    const featureContainer = container.querySelector('.feature-content')
     const featureBox = container.querySelector('.feature-box')
     const navigation = container.querySelectorAll('.feature__nav__el')
 
@@ -187,118 +187,6 @@ export default {
       0.8
     )
 
-    return tl.then()
+    return tl
   },
 }
-
-/**
- *
- * @param {*HTMLElement} data getting container
- */
-// function oldEnder(data) {
-//   data.next.container.style.cssText = `
-//     visibility: hidden;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//   `
-
-//   const current = {}
-
-//   ;(current.$logo = qs('.logo', data.current.container)),
-//     (current.logoRect = current.$logo.getBoundingClientRect())
-//   current.$morphParent = qs('.big1', current.$logo)
-//   current.$morphs = [...qsa('[data-morph]', current.$morphParent)]
-//   current.$fadeOut = qsa('.intro h1, .intro .button')
-
-//   const next = {}
-//   ;(next.$logo = qs('.logo', data.next.container)),
-//     (next.logoRect = next.$logo.getBoundingClientRect())
-//   next.$morphParent = qs('.big1', next.$logo)
-//   next.$morphs = [...qsa('[data-morph]', next.$morphParent)]
-
-//   qs('svg', current.$logo).classList.add('fillgray')
-
-//   const dfd = deferred()
-
-//   const tl = gsap.timeline({
-//     onComplete: () => {
-//       data.next.container.style.cssText = ''
-//       dfd.resolve()
-//     },
-//   })
-
-//   tl.to(
-//     current.$logo,
-//     {
-//       duration: 2,
-//       y: next.logoRect.y - current.logoRect.y - 40,
-//       width: next.logoRect.width,
-//     },
-//     0
-//   )
-
-//   tl.staggerTo(
-//     current.$fadeOut,
-//     {
-//       duration: 0.4,
-//       y: 50,
-//       opacity: 0,
-//     },
-//     0.1
-//   )
-
-//   tl.to(
-//     current.$morphParent,
-//     {
-//       duration: 1,
-//       opacity: 1,
-//     },
-//     0
-//   )
-
-//   current.$morphs.forEach((el, index) => {
-//     tl.to(
-//       el,
-//       {
-//         duration: 3,
-//         // transformOrigin: next.$morphs[index].style.transformOrigin,
-//         transform: getComputedStyle(next.$morphs[index]).transform,
-//       },
-//       0.1 + 0.1 * index
-//     )
-//   })
-
-//   tl.add('crossfade')
-
-//   tl.set(
-//     data.next.container,
-//     {
-//       visibility: 'visible',
-//       opacity: 0,
-//     },
-//     'crossfade'
-//   )
-
-//   tl.to(
-//     data.next.container,
-//     {
-//       duration: 1,
-//       opacity: 1,
-//     },
-//     'crossfade'
-//   )
-
-//   tl.to(
-//     data.current.container,
-//     {
-//       duration: 1,
-//       opacity: 0,
-//     },
-//     'crossfade'
-//   )
-
-//   return dfd.promise
-// }

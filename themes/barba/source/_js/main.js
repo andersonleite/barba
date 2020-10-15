@@ -5,22 +5,25 @@ import kapla from './app'
 
 // Update GA
 barba.hooks.after(() => {
-  if (gtag && GTAG_ID) {
-    gtag('config', window.GTAG_ID, { 'page_path': window.location.pathname });
+  if (window.gtag && window.GTAG_ID) {
+    window.gtag('config', window.GTAG_ID, {
+      // eslint-disable-next-line camelcase
+      page_path: window.location.pathname,
+    })
   }
-});
+})
 
 // Hash at page change...
 barba.hooks.after(() => {
   window.setTimeout(() => {
-    const oldHash = window.location.hash;
+    const oldHash = window.location.hash
 
     if (oldHash) {
-      window.location.hash = '';
-      window.location.hash = oldHash;
+      window.location.hash = ''
+      window.location.hash = oldHash
     }
-  }, 100);
-});
+  }, 100)
+})
 
 // DEV
 // import routes from './transitions/routes'
@@ -73,6 +76,17 @@ class Main {
 
     // Avoid 'blank page' on JS error
     try {
+      window.addEventListener(
+        'touchstart',
+        function onFirstTouch() {
+          // Perform action here and remove listener
+          console.info('touch detection')
+          window.__IS_TOUCH__ = true
+          window.removeEventListener('touchstart', onFirstTouch, false)
+        },
+        false
+      )
+
       barba.use(router, {
         routes: getRoutes(),
       })

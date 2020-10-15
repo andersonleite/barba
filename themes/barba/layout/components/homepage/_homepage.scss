@@ -7,22 +7,11 @@
   align-items: center;
   padding: 4rem;
   text-align: center;
-
-  .logo {
-    max-width: 57rem;
-    margin: 0 auto;
-  }
 }
 
 .homepage__logo-outer {
   position: relative;
   width: 100%;
-
-  @include mq($until: m) {
-    .logo.only-big {
-      padding: 2rem 0;
-    }
-  }
 }
 
 .homepage__logo {
@@ -38,23 +27,7 @@
   }
 
   .to-feature & {
-    z-index: -1;
-  }
-}
-
-.homepage .logo.only-big {
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-  // transform: scale(0.7);
-
-  .base,
-  .links {
-    display: none;
-  }
-
-  .to-feature & {
-    position: static;
+    z-index: 0;
   }
 }
 

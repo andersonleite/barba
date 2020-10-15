@@ -60,11 +60,11 @@ export default {
     const currentFeatureOrder = $currentFeature.dataset.featureOrder
     const goingForward = isForward(currentFeatureOrder, nextFeatureOrder)
 
-    const $nextContainer = $nextFeature.querySelector('.feature-outer')
+    const $nextContainer = $nextFeature.querySelector('.feature-content')
     const $nextBox = $nextFeature.querySelector('.feature-box')
     const $nextInstance = getInstance(next.container, 'feature')
 
-    const $currentContainer = $currentFeature.querySelector('.feature-outer')
+    const $currentContainer = $currentFeature.querySelector('.feature-content')
     const $currentBox = $currentFeature.querySelector('.feature-box')
 
     const $currentLogo = $currentFeature.querySelector('.logo')
@@ -94,7 +94,8 @@ export default {
       {
         duration: 1,
         x: goingForward ? -window.innerWidth : window.innerWidth,
-        rotationY: goingForward ? '45deg' : '-45deg',
+        // DEBUG: some z-index/3D glitches
+        // rotationY: goingForward ? '45deg' : '-45deg',
         ease: 'power4.inOut',
       },
       0
@@ -142,7 +143,8 @@ export default {
         {
           duration: 1,
           x: goingForward ? window.innerWidth : -window.innerWidth,
-          rotationY: goingForward ? '-45deg' : '45deg',
+          // DEBUG: some z-index/3D glitches
+          // rotationY: goingForward ? '-45deg' : '45deg',
           ease: 'power4',
           onComplete: () => {
             if (nextFeatureSlug !== 'about') {

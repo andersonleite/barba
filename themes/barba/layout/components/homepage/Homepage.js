@@ -28,6 +28,10 @@ export default class extends Component {
   }
 
   mouseEnter(index) {
+    if (window.__IS_TOUCH__) {
+      return
+    }
+
     this.$logo.classList.add('gray')
 
     const container = document.querySelector('[data-barba="container"]')
@@ -55,7 +59,7 @@ export default class extends Component {
   }
 
   mouseLeave(index) {
-    if (barba.transitions.isRunning) {
+    if (barba.transitions.isRunning || window.__IS_TOUCH__) {
       return
     }
 

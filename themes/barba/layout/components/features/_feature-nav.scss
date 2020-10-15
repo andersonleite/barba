@@ -1,6 +1,5 @@
-.feature__nav {
+.feature-nav {
   position: fixed;
-  z-index: 10;
   top: 50%;
   left: 0;
   display: flex;
@@ -49,7 +48,7 @@
   }
 }
 
-.feature__nav__el {
+.feature-nav__el {
   @include mq(m) {
     a:hover {
       span {

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import { gsap } from 'gsap'
 
 export default {
@@ -13,7 +14,7 @@ export default {
 
   leave({ current }) {
     const { container } = current
-    const feature = container.querySelector('.feature-outer')
+    const feature = container.querySelector('.feature-content')
     const navigation = container.querySelectorAll('.feature__nav__el')
     const oldLogo = container.querySelectorAll(
       '.logo.featured .base, .logo.featured .hover'
@@ -25,15 +26,12 @@ export default {
 
     return gsap
       .timeline()
-      .to(
-        feature,
-        {
-          duration: 1,
-          y: 100,
-          opacity: 0,
-          ease: 'power4.in',
-        },
-      )
+      .to(feature, {
+        duration: 1,
+        y: 100,
+        opacity: 0,
+        ease: 'power4.in',
+      })
       .to(
         navigation,
         {
@@ -86,13 +84,16 @@ export default {
 
     newLogoSVG.classList.add('fillgray')
 
+    const logoY =
+      oldLogoRect.y +
+      oldLogoRect.height / 2 -
+      (newLogoRect.y + newLogoRect.height / 2)
+
     return gsap
       .timeline()
       .set(newLogo, {
         scale,
-        // DEV
-        // y: -((oldLogoRect.top - newLogoRect.top) + ((newLogoRect.height * scale) * 2) - 6),
-        y: -(newLogoRect.top - oldLogoRect.top) - 40,
+        y: logoY,
         opacity: 0,
       })
       .add(() => {

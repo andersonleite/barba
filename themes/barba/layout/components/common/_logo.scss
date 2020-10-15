@@ -4,6 +4,11 @@
   font-size: 0;
   // will-change: transform;
 
+  .homepage & {
+    max-width: 57rem;
+    margin: 0 auto;
+  }
+
   svg {
     overflow: visible;
     width: 100%;
@@ -63,6 +68,25 @@
 .logo.only-big {
   // will-change: initial;
   // height: 100vh;
+  .homepage & {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    // transform: scale(0.7);
+
+    @include mq($until: m) {
+      padding: 2rem 0;
+    }
+
+    .base,
+    .links {
+      display: none;
+    }
+
+    .to-feature & {
+      position: static;
+    }
+  }
 }
 
 .featured {
@@ -101,7 +125,7 @@
 
   &.grow.b1,
   .detail-feature &.b1 {
-    z-index: 9;
+    z-index: 2;
 
     rect {
       transform: scale(6) translate(-3vw, -4vh) rotate(20deg);
@@ -114,7 +138,7 @@
 
   &.grow.a2,
   .detail-feature &.a2 {
-    z-index: 9;
+    z-index: 2;
 
     circle {
       transform: scale(6) translate(1vw, -1vh) rotate(64deg);
@@ -127,7 +151,7 @@
 
   &.grow.r3,
   .detail-feature &.r3 {
-    z-index: 9;
+    z-index: 2;
 
     path {
       transform: scale(7) translate(10vw, -2vh) rotate(-147deg);
@@ -140,7 +164,7 @@
 
   &.grow.b4,
   .detail-feature &.b4 {
-    z-index: 9;
+    z-index: 2;
 
     rect {
       transform: scale(7) translate(4vw, -4vh) rotate(-27deg);
@@ -153,7 +177,7 @@
 
   &.grow.a5,
   .detail-feature &.a5 {
-    z-index: 9;
+    z-index: 2;
 
     rect {
       transform: scale(7) translate(-15vw, -5vh) rotate(-24deg);
@@ -166,7 +190,7 @@
 
   &.grow.c6,
   .detail-feature &.c6 {
-    z-index: 9;
+    z-index: 2;
 
     .togrow {
       transform: scale(5) rotate(-35deg);
@@ -177,25 +201,33 @@
 .can-move .move {
   // will-change: transform;
 
-  &.move1 {
-    animation: move1 20s infinite ease-in-out;
-  }
+  // &.move1,
+  // &.move2,
+  // &.move3,
+  // &.move4,
+  // &.move5 {
+  //   transform: translate(0, 0);
+  // }
 
-  &.move2 {
-    animation: move2 29s infinite ease-in-out;
-  }
+  // &.move1 {
+  //   animation: move1 20s infinite ease-in-out;
+  // }
 
-  &.move3 {
-    animation: move3 24s infinite ease-in-out;
-  }
+  // &.move2 {
+  //   animation: move2 29s infinite ease-in-out;
+  // }
 
-  &.move4 {
-    animation: move4 39s infinite ease-in-out;
-  }
+  // &.move3 {
+  //   animation: move3 24s infinite ease-in-out;
+  // }
 
-  &.move5 {
-    animation: move5 18s infinite ease-in-out;
-  }
+  // &.move4 {
+  //   animation: move4 39s infinite ease-in-out;
+  // }
+
+  // &.move5 {
+  //   animation: move5 18s infinite ease-in-out;
+  // }
 }
 
 @keyframes move1 {

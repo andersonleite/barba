@@ -48,21 +48,7 @@ html.is-transitioning {
   }
 }
 
-.site-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 .site-content-inner {
-  @include owl;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-
   &[data-barba-namespace='docs'] {
     display: block;
     padding: 0;
