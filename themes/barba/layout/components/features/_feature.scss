@@ -1,14 +1,17 @@
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, no-descending-specificity */
 .feature {
-  @include get-all-space;
-
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
+  width: 100%;
   margin-top: 20rem !important; //stylelint-disable-line declaration-no-important
   margin-bottom: 10rem !important; //stylelint-disable-line declaration-no-important
   padding: 0 4rem;
   perspective: 1000px;
 
   @include mq(m) {
+    height: 100vh;
     margin-top: 0 !important; //stylelint-disable-line declaration-no-important
     margin-bottom: 0 !important; //stylelint-disable-line declaration-no-important
     padding: 4rem;
@@ -50,10 +53,6 @@
 
   z-index: 0;
   opacity: 0.8;
-
-  @include mq($until: l) {
-    height: 100vh;
-  }
 
   .logo.only-big {
     @include get-all-space;

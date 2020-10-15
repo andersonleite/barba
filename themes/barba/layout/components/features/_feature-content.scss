@@ -16,7 +16,7 @@
     height: 100%;
   }
 
-  @media screen and (min-height: $feature-min-height) and (min-wid) {
+  @media screen and (min-height: $feature-min-height) and (min-width) {
     justify-content: space-between;
     height: 100%;
   }
@@ -118,6 +118,9 @@
 
   @include mq(m) {
     top: -5rem;
+    /* stylelint-disable-next-line declaration-no-important */
+    margin-bottom: 25vh !important;
+    // Attention compatibilité avec min-height infra
     font-size: 5rem;
   }
 
@@ -127,7 +130,6 @@
 
   @media screen and (min-height: $feature-min-height) {
     margin-top: 2rem;
-    margin-bottom: 0;
   }
 }
 
@@ -135,7 +137,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 14rem;
+  bottom: 25vh;
   left: 0;
 
   @include mq($until: m) {

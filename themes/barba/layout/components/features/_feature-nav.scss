@@ -1,6 +1,6 @@
 .feature-nav {
   position: fixed;
-  top: 50%;
+  top: 35vh;
   left: 0;
   display: flex;
   justify-content: space-between;
@@ -13,6 +13,7 @@
   pointer-events: none;
 
   @include mq(m) {
+    top: 50vh;
     padding: 0 5rem;
   }
 
