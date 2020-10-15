@@ -39,6 +39,9 @@ export default {
     const newBigShapeRect = newBigShape.getBoundingClientRect()
     const scale = newLogoRect.width / oldLogoRect.width
 
+    console.log('old', oldBigShapeRect)
+    console.log('new', newBigShapeRect)
+
     current.container.querySelector('.menu-trigger').style.opacity = '0'
     intro.classList.add('to-feature')
 
@@ -77,7 +80,7 @@ export default {
         oldBigShape,
         {
           duration: 1.3,
-          y: newBigShapeRect.top - oldBigShapeRect.top,
+          y: newBigShapeRect.top + oldBigShapeRect.height,
           ease: 'power4.inOut',
         },
         0.1
